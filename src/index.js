@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/estilo.css";
+import "./styles/Navbar.css";
 //Este import es solo para los iconos de FontAwesome, por si acaso.
 import "@fortawesome/fontawesome-free/css/all.min.css"; 
 

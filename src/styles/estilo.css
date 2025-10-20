@@ -1,8 +1,5 @@
 /*
-|--------------------------------------------------------------------------
-| VARIABLES CSS - Define tu paleta de colores y fuentes
-|--------------------------------------------------------------------------
-| Usa estas variables en tu CSS para mantener la consistencia.
+| Variables con colores para utilizar después
 */
 :root {
     /* Paleta de Colores */
@@ -27,6 +24,7 @@
 |--------------------------------------------------------------------------
 | Aplicados al body y encabezados. Bootstrap se encarga del resto.
 */
+
 body {
     background-color: var(--color-principal-negro);
     color: #ffffff;
