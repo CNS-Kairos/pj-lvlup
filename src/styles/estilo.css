@@ -1,0 +1,239 @@
+/*
+|--------------------------------------------------------------------------
+| VARIABLES CSS - Define tu paleta de colores y fuentes
+|--------------------------------------------------------------------------
+| Usa estas variables en tu CSS para mantener la consistencia.
+*/
+:root {
+    /* Paleta de Colores */
+    --color-principal-negro: #000000;
+    --color-fondo-secundario: #1a1a1a;
+    --color-fondo-claro: #2a2a2a;
+    --color-acento-amarillo: #ffcc00; /* Dorado/Amarillo Level-Up */
+    --color-accion-azul: #1E90FF;    /* Azul Eléctrico */
+    --color-exito-verde: #39FF14;    /* Verde Neón */
+    --color-peligro-rojo: #ff4444;   /* Rojo para errores/eliminar */
+    --color-texto-gris: #ccc;
+    
+    /* Tipografía */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| BASE & TIPOGRAFÍA - Estilos Globales
+|--------------------------------------------------------------------------
+| Aplicados al body y encabezados. Bootstrap se encarga del resto.
+*/
+body {
+    background-color: var(--color-principal-negro);
+    color: #ffffff;
+    font-family: var(--font-body);
+    /* Bootstrap (en App.jsx) ya maneja el padding/margin */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+}
+
+/*
+|--------------------------------------------------------------------------
+| COMPONENTES ÚNICOS (NAVBAR, FOOTER, BANNERS)
+|--------------------------------------------------------------------------
+| Mantenemos la identidad visual que Bootstrap no da por defecto.
+*/
+
+/* Estilos para el NavLink activo (usar className="text-warning fw-bold" en NavLink) */
+.navbar-nav .nav-link:hover {
+    color: var(--color-acento-amarillo) !important;
+}
+
+/* Footer: Usamos Bootstrap para el padding y el border, solo agregamos el color de los íconos */
+footer a {
+    color: #ffffff; /* Color de los íconos */
+    font-size: 1.5rem; /* Usamos rem para tamaño relativo */
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--color-accion-azul); /* Hover Azul */
+}
+
+/* BANNERS (Deben usar container-fluid en su componente JSX) */
+.banner-principal,
+.banner-nosotros,
+.banner-contacto {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4rem 1rem; /* p-5 en Bootstrap */
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    /* Las propiedades de width: 100% y margenes negativos se eliminan
+       y se reemplazan por un div container-fluid en React */
+}
+
+.banner-principal {
+    background-image: url('../assets/img/banner-gamer.jpg');
+}
+.banner-nosotros {
+    background-image: url('../assets/img/equipo-gamer.webp');
+}
+.banner-contacto {
+    background-image: url('../assets/img/contactanos\ banner.jpg');
+}
+
+.banner-principal h1,
+.banner-principal p,
+.banner-nosotros h1,
+.banner-contacto h1 {
+    text-shadow: 2px 2px 4px var(--color-principal-negro);
+}
+
+.banner-nosotros h1 {
+    color: var(--color-acento-amarillo);
+}
+
+/*
+|--------------------------------------------------------------------------
+| CARDS y PRODUCTOS
+|--------------------------------------------------------------------------
+*/
+.card-producto,
+.card-articulo {
+    background-color: var(--color-fondo-secundario);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Para que las cards en un row tengan la misma altura */
+}
+
+.card-producto:hover,
+.card-articulo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+}
+
+/* Botones con Gradiente Personalizado (usar como botones genéricos) */
+.boton-comprar {
+    background: linear-gradient(45deg, #ff6b35, #f7931e); /* Naranja */
+}
+.boton-detalle {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Azul */
+}
+
+/* Estilos base para todos los botones personalizados */
+.boton-comprar,
+.boton-detalle {
+    color: #ffffff !important;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.boton-comprar:hover {
+    background: linear-gradient(45deg, #e55a2b, #e0841a);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+.boton-detalle:hover {
+    background: linear-gradient(45deg, #0056b3, #004494);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/*
+|--------------------------------------------------------------------------
+| FORMULARIOS (CONTACTO / LOGIN)
+|--------------------------------------------------------------------------
+| Estilos personalizados para inputs oscuros.
+*/
+.form-control-dark,
+.form-select-dark {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control-dark:focus,
+.form-select-dark:focus {
+    border-color: var(--color-acento-amarillo);
+    background-color: #333;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25); /* Glow amarillo */
+}
+
+/* Estilo para los mensajes de error del formulario */
+.error {
+    color: var(--color-peligro-rojo);
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Botón de envío (Usar btn-primary en el HTML para mantener consistencia) */
+.boton-enviar {
+    background-color: var(--color-accion-azul); /* Azul Eléctrico */
+    color: #ffffff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.boton-enviar:hover {
+    background-color: var(--color-exito-verde); /* Verde Neón */
+    color: var(--color-principal-negro);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| OTROS UTILS
+|--------------------------------------------------------------------------
+*/
+
+/* Contenedor de "Sobre la Empresa" usando flex */
+.contenido-sobre-empresa {
+    gap: 30px; 
+}
+.imagen-empresa img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Utilidad para darle color al texto de un Label */
+.label-warning {
+    color: var(--color-acento-amarillo) !important;
+}
+
+/* Utilidad para el loader */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-icon {
+    animation: spin 2s linear infinite;
+}
