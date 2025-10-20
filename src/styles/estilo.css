@@ -1,15 +1,13 @@
-/*
-| Variables con colores para utilizar después
-*/
+/* Variables con colores para utilizar después */
 :root {
     /* Paleta de Colores */
     --color-principal-negro: #000000;
     --color-fondo-secundario: #1a1a1a;
     --color-fondo-claro: #2a2a2a;
-    --color-acento-amarillo: #ffcc00; /* Dorado/Amarillo Level-Up */
-    --color-accion-azul: #1E90FF;    /* Azul Eléctrico */
-    --color-exito-verde: #39FF14;    /* Verde Neón */
-    --color-peligro-rojo: #ff4444;   /* Rojo para errores/eliminar */
+    --color-acento-amarillo: #ffcc00;
+    --color-accion-azul: #1E90FF;
+    --color-exito-verde: #39FF14;
+    --color-peligro-rojo: #ff4444;
     --color-texto-gris: #ccc;
     
     /* Tipografía */
@@ -17,70 +15,56 @@
     --font-body: 'Roboto', sans-serif;
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| BASE & TIPOGRAFÍA - Estilos Globales
-|--------------------------------------------------------------------------
-| Aplicados al body y encabezados. Bootstrap se encarga del resto.
-*/
-
+/* Estilos base */
 body {
     background-color: var(--color-principal-negro);
     color: #ffffff;
     font-family: var(--font-body);
-    /* Bootstrap (en App.jsx) ya maneja el padding/margin */
 }
 
 h1, h2, h3 {
     font-family: var(--font-heading);
 }
 
-/*
-|--------------------------------------------------------------------------
-| COMPONENTES ÚNICOS (NAVBAR, FOOTER, BANNERS)
-|--------------------------------------------------------------------------
-| Mantenemos la identidad visual que Bootstrap no da por defecto.
-*/
-
-/* Estilos para el NavLink activo (usar className="text-warning fw-bold" en NavLink) */
-.navbar-nav .nav-link:hover {
+/* Utilidades globales */
+.label-warning {
     color: var(--color-acento-amarillo) !important;
 }
 
-/* Footer: Usamos Bootstrap para el padding y el border, solo agregamos el color de los íconos */
-footer a {
-    color: #ffffff; /* Color de los íconos */
-    font-size: 1.5rem; /* Usamos rem para tamaño relativo */
-    transition: color 0.3s ease;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-footer a:hover {
-    color: var(--color-accion-azul); /* Hover Azul */
+.spinner-icon {
+    animation: spin 2s linear infinite;
 }
 
-/* BANNERS (Deben usar container-fluid en su componente JSX) */
+/* ============================================ */
+/* BANNERS - Reutilizables para todas las paginas */
+/* ============================================ */
+
 .banner-principal,
 .banner-nosotros,
 .banner-contacto {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 4rem 1rem; /* p-5 en Bootstrap */
+    padding: 4rem 1rem;
     text-align: center;
     margin-bottom: 20px;
     color: #ffffff;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    /* Las propiedades de width: 100% y margenes negativos se eliminan
-       y se reemplazan por un div container-fluid en React */
 }
 
 .banner-principal {
     background-image: url('../assets/img/banner-gamer.jpg');
 }
+
 .banner-nosotros {
     background-image: url('../assets/img/equipo-gamer.webp');
 }
+
 .banner-contacto {
     background-image: url('../assets/img/contactanos\ banner.jpg');
 }
@@ -96,11 +80,11 @@ footer a:hover {
     color: var(--color-acento-amarillo);
 }
 
-/*
-|--------------------------------------------------------------------------
-| CARDS y PRODUCTOS
-|--------------------------------------------------------------------------
-*/
+/* ============================================ */
+/* CARDS - Productos y articulos */
+/* ============================================ */
+
+/* Card base */
 .card-producto,
 .card-articulo {
     background-color: var(--color-fondo-secundario);
@@ -108,7 +92,7 @@ footer a:hover {
     padding: 1rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%; /* Para que las cards en un row tengan la misma altura */
+    height: 100%;
 }
 
 .card-producto:hover,
@@ -117,28 +101,40 @@ footer a:hover {
     box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
 }
 
-/* Botones con Gradiente Personalizado (usar como botones genéricos) */
-.boton-comprar {
-    background: linear-gradient(45deg, #ff6b35, #f7931e); /* Naranja */
-}
-.boton-detalle {
-    background: linear-gradient(45deg, #007bff, #0056b3); /* Azul */
+/* Imagenes dentro de las cards */
+.card-producto img,
+.card-articulo img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 1rem;
 }
 
-/* Estilos base para todos los botones personalizados */
+/* Contenedor de botones */
+.botones-producto {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Botones - estilos compartidos */
 .boton-comprar,
 .boton-detalle {
     color: #ffffff !important;
     padding: 12px 20px;
     text-decoration: none;
     border-radius: 25px;
-    display: inline-block;
     font-weight: bold;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    text-align: center;
     font-size: 14px;
+}
+
+/* Boton comprar naranja */
+.boton-comprar {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
 }
 
 .boton-comprar:hover {
@@ -147,18 +143,22 @@ footer a:hover {
     box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
 
+/* Boton detalle azul */
+.boton-detalle {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
 .boton-detalle:hover {
     background: linear-gradient(45deg, #0056b3, #004494);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
 }
 
-/*
-|--------------------------------------------------------------------------
-| FORMULARIOS (CONTACTO / LOGIN)
-|--------------------------------------------------------------------------
-| Estilos personalizados para inputs oscuros.
-*/
+/* ============================================ */
+/* FORMULARIOS - Contacto, Login, Registro */
+/* ============================================ */
+
+/* Inputs oscuros */
 .form-control-dark,
 .form-select-dark {
     padding: 10px;
@@ -175,19 +175,19 @@ footer a:hover {
     border-color: var(--color-acento-amarillo);
     background-color: #333;
     color: #ffffff;
-    box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25); /* Glow amarillo */
+    box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25);
 }
 
-/* Estilo para los mensajes de error del formulario */
+/* Mensajes de error */
 .error {
     color: var(--color-peligro-rojo);
     font-size: 0.9em;
     margin-top: 5px;
 }
 
-/* Botón de envío (Usar btn-primary en el HTML para mantener consistencia) */
+/* Boton de envio */
 .boton-enviar {
-    background-color: var(--color-accion-azul); /* Azul Eléctrico */
+    background-color: var(--color-accion-azul);
     color: #ffffff;
     padding: 15px 20px;
     border: none;
@@ -200,38 +200,7 @@ footer a:hover {
 }
 
 .boton-enviar:hover {
-    background-color: var(--color-exito-verde); /* Verde Neón */
+    background-color: var(--color-exito-verde);
     color: var(--color-principal-negro);
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| OTROS UTILS
-|--------------------------------------------------------------------------
-*/
-
-/* Contenedor de "Sobre la Empresa" usando flex */
-.contenido-sobre-empresa {
-    gap: 30px; 
-}
-.imagen-empresa img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Utilidad para darle color al texto de un Label */
-.label-warning {
-    color: var(--color-acento-amarillo) !important;
-}
-
-/* Utilidad para el loader */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.spinner-icon {
-    animation: spin 2s linear infinite;
-}
