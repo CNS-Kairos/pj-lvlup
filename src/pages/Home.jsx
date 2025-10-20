@@ -14,32 +14,31 @@ export default function Home() {
         <h1>¡Tienda Level-Up!</h1>
         <p>Los mejores productos gaming a un clic de distancia.</p>
       </section>
-      {/* <!-- Información sobre nosotros --> */}
+      {/* Información sobre nosotros */}
       <section className="sobre-empresa">
         <h2>Sobre la Empresa</h2>
-        <div className="contenido-sobre-empresa">
-          <div className="texto-empresa">
-            <p>
-              Level-Up Gamer es una tienda online dedicada a satisfacer las
-              necesidades de los entusiastas de los videojuegos en Chile.
-              Lanzada hace dos años como respuesta a la creciente demanda,
-              ofrecemos una amplia gama de productos para gamers, desde consolas
-              y accesorios hasta computadores y sillas especializadas.
-            </p>
-            <p>
-              Aunque no contamos con una ubicación física, realizamos despachos
-              a todo el país. Nuestra misión es proporcionar productos de alta
-              calidad y una experiencia de compra única y personalizada.
-            </p>
-          </div>
-          <div className="imagen-empresa">
-            <img
-              src={logo}
-              width="200px"
-              alt="Imagen de la empresa Level-Up Gamer"
-            />
-          </div>
-        </div>
+        
+        {/* Logo centrado */}
+        <img
+          src={logo}
+          width="200px"
+          alt="Logo de Level-Up Gamer"
+          style={{ display: 'block', margin: '2rem auto' }}
+        />
+        
+        {/* Texto de la empresa */}
+        <p>
+          Level-Up Gamer es una tienda online dedicada a satisfacer las
+          necesidades de los entusiastas de los videojuegos en Chile.
+          Lanzada hace dos años como respuesta a la creciente demanda,
+          ofrecemos una amplia gama de productos para gamers, desde consolas
+          y accesorios hasta computadores y sillas especializadas.
+        </p>
+        <p>
+          Aunque no contamos con una ubicación física, realizamos despachos
+          a todo el país. Nuestra misión es proporcionar productos de alta
+          calidad y una experiencia de compra única y personalizada.
+        </p>
       </section>
 
       {/* <!-- Productos destacados para mostrar en el home --> */}

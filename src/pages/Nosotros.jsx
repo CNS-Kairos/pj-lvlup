@@ -13,10 +13,10 @@ export default function Nosotros() {
 
       {/* Contenido principal de nosotros */}
       <section className="seccion-nosotros">
-        <div className="contenido-nosotros">
+        <div>
           
           {/* Mision y vision de la empresa */}
-          <div className="mision-vision">
+          <div>
             <h3>Nuestra Misión</h3>
             <p>
               Proporcionar productos de alta calidad para gamers en todo Chile,
@@ -34,12 +34,12 @@ export default function Nosotros() {
           </div>
 
           {/* Equipo de trabajo */}
-          <div className="equipo">
+          <div>
             <h3>Nuestro Equipo</h3>
             <div className="miembros">
               
               {/* Matias */}
-              <div className="miembro">
+              <div>
                 <img src={matias} alt="Miembro del equipo 1" />
                 <h4>Matias</h4>
                 <p>
@@ -49,7 +49,7 @@ export default function Nosotros() {
               </div>
 
               {/* Andrea */}
-              <div className="miembro">
+              <div>
                 <img src={andrea} alt="Miembro del equipo 2" />
                 <h4>Andrea</h4>
                 <p>
@@ -59,7 +59,7 @@ export default function Nosotros() {
               </div>
 
               {/* Omar */}
-              <div className="miembro">
+              <div>
                 <img src={omar} alt="Miembro del equipo 3" />
                 <h4>Omar</h4>
                 <p>
@@ -73,7 +73,7 @@ export default function Nosotros() {
           </div>
 
           {/* Valores de la empresa */}
-          <div className="nuestros-valores">
+          <div>
             <h3>Nuestros Valores</h3>
             <ul>
               <li>
