@@ -1,0 +1,42 @@
+/* Estilos específicos de la página Contacto */
+
+/* Contenedor principal de la sección */
+.seccion-contacto {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.seccion-contacto p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: var(--color-texto-gris);
+}
+
+/* Formulario de contacto */
+.formulario-contacto {
+    text-align: left;
+    background-color: var(--color-fondo-secundario);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* Campos del formulario */
+.campo-formulario {
+    margin-bottom: 1.5rem;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-acento-amarillo);
+    font-weight: bold;
+}
+
+/* Textarea específico */
+.campo-formulario textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 120px;
+}
