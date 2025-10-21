@@ -14,6 +14,7 @@ import "./styles/Navbar.css";        // Navbar
 import "./styles/Footer.css";        // Footer
 import "./styles/Home.css";          // Página Home
 import "./styles/Nosotros.css";      // Página Nosotros
+import "./styles/Contacto.css";      // Página Contacto
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
