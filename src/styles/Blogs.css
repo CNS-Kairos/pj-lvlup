@@ -1,0 +1,49 @@
+/* Estilos específicos de la página Blogs */
+
+/* Sección principal de blogs */
+.seccion-blog {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.seccion-blog h2 {
+    margin-bottom: 2rem;
+    color: var(--color-acento-amarillo);
+}
+
+/* Contenedor de artículos - Grid */
+.contenedor-articulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Imagen de blog */
+.imagen-blog {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Botón "Ver caso" */
+.boton-ver-caso {
+    display: inline-block;
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: #ffffff !important;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.boton-ver-caso:hover {
+    background: linear-gradient(45deg, #0056b3, #004494);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
