@@ -1,0 +1,51 @@
+/* Estilos específicos para la página DetalleProducto */
+
+.seccion-detalle-producto {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--color-fondo-secundario);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.detalle-imagen {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detalle-imagen img {
+    max-width: 320px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.detalle-info {
+    flex: 2 1 350px;
+    text-align: left;
+}
+
+.detalle-info h2 {
+    color: var(--color-acento-amarillo);
+    margin-bottom: 1rem;
+}
+
+.detalle-descripcion {
+    color: var(--color-texto-gris);
+    margin-bottom: 1.5rem;
+}
+
+.detalle-precio {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-exito-verde);
+    margin-bottom: 2rem;
+}
+
+/* El botón usa .boton-comprar de estilo.css */
