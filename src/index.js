@@ -16,6 +16,7 @@ import "./styles/Home.css";          // Página Home
 import "./styles/Nosotros.css";      // Página Nosotros
 import "./styles/Contacto.css";      // Página Contacto
 import "./styles/Blogs.css";         // Página Blogs
+import "./styles/Productos.css";      // Página Productos
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
