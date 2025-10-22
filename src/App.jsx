@@ -6,6 +6,7 @@ import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
 import Blogs from "./pages/Blogs";
 import Productos from "./pages/Productos";
+import DetalleProducto from "./pages/DetalleProducto";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/productos" element={<Productos />} />
+            <Route path="/producto/:id" element={<DetalleProducto />} />
           </Routes>
         </main>
         <Footer/>
