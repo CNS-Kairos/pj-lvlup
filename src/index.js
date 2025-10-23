@@ -19,6 +19,7 @@ import "./styles/Blogs.css";         // Página Blogs
 import "./styles/Productos.css";      // Página Productos
 import "./styles/DetalleProducto.css";      // Página DetalleProducto
 import "./styles/Carrito.css";      // Página Carrito
+import "./styles/Login.css";      // Página Login
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
