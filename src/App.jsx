@@ -7,6 +7,7 @@ import Contacto from "./pages/Contacto";
 import Blogs from "./pages/Blogs";
 import Productos from "./pages/Productos";
 import DetalleProducto from "./pages/DetalleProducto";
+import Carrito from "./pages/Carrito";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/productos" element={<Productos />} />
             <Route path="/producto/:id" element={<DetalleProducto />} />
+            <Route path="/carrito" element={<Carrito />} />
           </Routes>
         </main>
         <Footer/>
