@@ -1,0 +1,75 @@
+/* Estilos específicos para la página Carrito */
+
+.seccion-carrito {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--color-fondo-secundario);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.seccion-carrito h2 {
+    color: var(--color-acento-amarillo);
+    margin-bottom: 2rem;
+}
+
+.contenedor-carrito {
+    min-height: 120px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.resumen-carrito {
+    background-color: var(--color-fondo-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.total-carrito {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-exito-verde);
+    margin-bottom: 1rem;
+}
+
+.acciones-carrito {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.boton-limpiar, .boton-finalizar {
+    background: linear-gradient(45deg, #ff4444, #e55a2b);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.boton-limpiar:hover, .boton-finalizar:hover {
+    background: linear-gradient(45deg, #e55a2b, #ff4444);
+}
+
+.boton-continuar {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: #fff !important;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.boton-continuar:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+}
