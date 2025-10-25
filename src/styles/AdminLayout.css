@@ -1,0 +1,31 @@
+/* Estilos básicos para el layout admin */
+.admin-layout {
+  display: flex;
+  min-height: 80vh;
+}
+.admin-sidebar {
+  width: 220px;
+  background: #23272f;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.admin-sidebar li {
+  margin-bottom: 1.5rem;
+}
+.admin-sidebar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.admin-sidebar a:hover {
+  text-decoration: underline;
+}
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  background: #f7f7f7;
+}
