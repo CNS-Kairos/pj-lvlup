@@ -1,6 +1,7 @@
 // Página de Blogs - Artículos recientes
 import nfts from "../assets/img/nfts en juegos.jpeg";
 import cincoG from "../assets/img/5g gaming.webp";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   return (
@@ -23,9 +24,9 @@ export default function Blogs() {
               Descubre cómo la tecnología blockchain está cambiando el mundo de
               los juegos.
             </p>
-            <a href="detalle-blog-1.html" className="boton-ver-caso">
+            <Link to="/blogs/nfts-en-videojuegos" className="boton-ver-caso">
               Ver caso
-            </a>
+            </Link>
           </div>
 
           {/* Artículo 5G Gaming */}
@@ -36,9 +37,9 @@ export default function Blogs() {
               Analizamos cómo la velocidad del 5G transformará la experiencia de
               juego en la nube.
             </p>
-            <a href="detalle-blog-2.html" className="boton-ver-caso">
+            <Link to="/blogs/5g-en-gaming" className="boton-ver-caso">
               Ver caso
-            </a>
+            </Link>
           </div>
         </div>
       </section>
