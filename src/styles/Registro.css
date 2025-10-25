@@ -1,0 +1,46 @@
+/* Estilos específicos para la página Registro */
+
+.seccion-formulario {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-fondo-secundario);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.seccion-formulario h2 {
+    color: var(--color-acento-amarillo);
+    margin-bottom: 2rem;
+}
+
+.campo-formulario {
+    margin-bottom: 1.3rem;
+    text-align: left;
+}
+
+.campo-formulario label {
+    color: var(--color-acento-amarillo);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.formulario-registro select:disabled {
+    background-color: #444;
+    color: #aaa;
+}
+
+.enlace-registro {
+    margin-top: 1.5rem;
+    color: var(--color-texto-gris);
+    font-size: 0.95rem;
+}
+
+.enlace-registro a {
+    color: var(--color-accion-azul);
+    text-decoration: underline;
+}
+
+/* Los inputs y el botón usan clases globales de estilo.css */
