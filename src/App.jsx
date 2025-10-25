@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import DetalleBlog1 from "./pages/DetalleBlog1";
 import DetalleBlog2 from "./pages/DetalleBlog2";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer/>

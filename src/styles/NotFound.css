@@ -1,0 +1,29 @@
+/* Estilos para la página 404 NotFound */
+
+.notfound-container {
+    text-align: center;
+    margin-top: 5rem;
+    color: var(--color-texto-gris);
+}
+
+.notfound-container h1 {
+    font-size: 5rem;
+    color: var(--color-acento-amarillo);
+    margin-bottom: 1rem;
+}
+
+.boton-volver {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: #fff !important;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.boton-volver:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+}
