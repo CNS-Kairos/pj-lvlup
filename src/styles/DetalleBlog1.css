@@ -1,0 +1,100 @@
+/* Estilos específicos para la página DetalleBlog1 (NFTs en videojuegos) */
+
+.breadcrumbs {
+    font-size: 0.98rem;
+    margin: 2rem 0 1.5rem 0;
+    color: var(--color-texto-gris);
+}
+.breadcrumbs a {
+    color: var(--color-accion-azul);
+    text-decoration: underline;
+}
+
+.articulo-detalle {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    background: var(--color-fondo-secundario);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.cabecera-articulo h1 {
+    color: var(--color-acento-amarillo);
+    margin-bottom: 0.5rem;
+}
+.meta-articulo {
+    font-size: 0.95rem;
+    color: var(--color-texto-gris);
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.imagen-destacada {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.imagen-articulo-principal {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.contenido-articulo h2, .contenido-articulo h3, .contenido-articulo h4 {
+    color: var(--color-acento-amarillo);
+    margin-top: 1.5rem;
+}
+.contenido-articulo ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.destacado {
+    background: #222;
+    border-left: 4px solid var(--color-acento-amarillo);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 6px;
+}
+blockquote {
+    background: #181818;
+    border-left: 4px solid var(--color-accion-azul);
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    color: var(--color-texto-gris);
+    border-radius: 6px;
+    font-style: italic;
+}
+.acciones-articulo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    gap: 1.5rem;
+}
+.boton-volver {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: #fff !important;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+    display: inline-block;
+}
+.boton-volver:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+}
+.compartir span {
+    margin-right: 0.5rem;
+    color: var(--color-texto-gris);
+}
+.btn-compartir {
+    margin: 0 0.2rem;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+.btn-compartir.facebook:hover { color: #1877f3; }
+.btn-compartir.twitter:hover { color: #1da1f2; }
+.btn-compartir.instagram:hover { color: #e1306c; }
