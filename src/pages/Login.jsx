@@ -6,7 +6,7 @@ export default function Login() {
       <section className="seccion-formulario">
         <h2>Iniciar Sesión</h2>
         <form id="formularioLogin">
-          {/* Campo: Correo Electrónico */}
+          {/* Campo de Correo Electrónico */}
           <div className="campo-formulario">
             <label htmlFor="usuario">Correo Electrónico:</label>
             <input
@@ -18,7 +18,7 @@ export default function Login() {
               className="form-control-dark"
             />
           </div>
-          {/* Campo: Contraseña */}
+          {/* Campo de Contraseña */}
           <div className="campo-formulario">
             <label htmlFor="contraseña">Contraseña:</label>
             <input
