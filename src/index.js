@@ -19,6 +19,7 @@ import "./styles/Blogs.css";         // Página Blogs
 import "./styles/Productos.css";      // Página Productos
 import "./styles/DetalleProducto.css";      // Página DetalleProducto
 import "./styles/DetalleBlog1.css";      // Página DetalleBlog1
+import "./styles/DetalleBlog2.css";      // Página DetalleBlog2
 import "./styles/Carrito.css";      // Página Carrito
 import "./styles/Login.css";      // Página Login
 import "./styles/Registro.css";      // Página Registro

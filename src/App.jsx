@@ -11,6 +11,7 @@ import Carrito from "./pages/Carrito";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import DetalleBlog1 from "./pages/DetalleBlog1";
+import DetalleBlog2 from "./pages/DetalleBlog2";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/nfts-en-videojuegos" element={<DetalleBlog1 />} />
+            <Route path="/blogs/5g-en-gaming" element={<DetalleBlog2 />} />
             <Route path="/productos" element={<Productos />} />
             <Route path="/producto/:id" element={<DetalleProducto />} />
             <Route path="/carrito" element={<Carrito />} />
