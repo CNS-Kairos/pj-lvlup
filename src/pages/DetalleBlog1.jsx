@@ -5,11 +5,6 @@ import { Link } from "react-router-dom";
 export default function DetalleBlog1() {
   return (
     <div>
-      {/* Breadcrumbs */}
-      <nav className="breadcrumbs">
-        <Link to="/">Inicio</Link> &gt; <Link to="/blogs">Blog</Link> &gt; <span>NFTs en Videojuegos</span>
-      </nav>
-
       {/* Artículo detalle */}
       <article className="articulo-detalle">
         <header className="cabecera-articulo">
