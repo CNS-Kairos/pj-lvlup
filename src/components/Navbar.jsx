@@ -23,6 +23,9 @@ export default function Navbar() {
             <Link to="/productos">Productos</Link>
           </li>
           <li>
+            <Link to="/blogs">Blogs</Link>
+          </li>
+          <li>
             <Link to="/nosotros">Nosotros</Link>
           </li>
           <li>
