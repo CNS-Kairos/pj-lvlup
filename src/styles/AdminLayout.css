@@ -1,31 +1,60 @@
-/* Estilos básicos para el layout admin */
+
+/* Layout admin minimalista */
 .admin-layout {
   display: flex;
-  min-height: 80vh;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 .admin-sidebar {
-  width: 220px;
-  background: #23272f;
+  min-width: 180px;
+  background: #222;
   color: #fff;
-  padding: 2rem 1rem;
+  padding: 1rem;
 }
 .admin-sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 .admin-sidebar li {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-.admin-sidebar a {
+.admin-sidebar a, .admin-sidebar span {
   color: #fff;
   text-decoration: none;
-  font-weight: 500;
-}
-.admin-sidebar a:hover {
-  text-decoration: underline;
+  font-size: 1rem;
+  cursor: pointer;
 }
 .admin-main {
   flex: 1;
-  padding: 2rem;
-  background: #f7f7f7;
+  padding: 1.5rem;
+  background: #fafbfc;
+}
+/* Reutilizables */
+.admin-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.admin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+th {
+  background: #f0f0f0;
 }
