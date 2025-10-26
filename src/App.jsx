@@ -13,6 +13,11 @@ import Registro from "./pages/Registro";
 import DetalleBlog1 from "./pages/DetalleBlog1";
 import DetalleBlog2 from "./pages/DetalleBlog2";
 import NotFound from "./pages/NotFound";
+import AdminLayout from "./admin/layouts/AdminLayout";
+import DashboardAdmin from "./admin/pages/DashboardAdmin";
+import ProductosAdmin from "./admin/pages/ProductosAdmin";
+import UsuariosAdmin from "./admin/pages/UsuariosAdmin";
+import NuevoUsuarioAdmin from "./admin/pages/NuevoUsuarioAdmin";
 
 export default function App() {
   return (
@@ -21,6 +26,7 @@ export default function App() {
         <Navbar />
         <main>
           <Routes>
+            {/* Rutas públicas */}
             <Route path="/" element={<Home />} />
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/contacto" element={<Contacto />} />
@@ -32,6 +38,16 @@ export default function App() {
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+
+            {/* Rutas admin (para acceder a ellas en un futuro, hay que generar la lógica del login) */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<DashboardAdmin />} />
+              <Route path="productos" element={<ProductosAdmin />} />
+              <Route path="usuarios" element={<UsuariosAdmin />} />
+              <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
+            </Route>
+
+            {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
