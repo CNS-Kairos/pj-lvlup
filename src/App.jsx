@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import PublicLayout from "./layouts/PublicLayout";
 import Home from "./pages/Home";
 import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
@@ -22,37 +21,30 @@ import NuevoUsuarioAdmin from "./admin/pages/NuevoUsuarioAdmin";
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="d-flex flex-column min-vh-100">
-        <Navbar />
-        <main>
-          <Routes>
-            {/* Rutas públicas */}
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/nfts-en-videojuegos" element={<DetalleBlog1 />} />
-            <Route path="/blogs/5g-en-gaming" element={<DetalleBlog2 />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/producto/:id" element={<DetalleProducto />} />
-            <Route path="/carrito" element={<Carrito />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-
-            {/* Rutas admin (para acceder a ellas en un futuro, hay que generar la lógica del login) */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<DashboardAdmin />} />
-              <Route path="productos" element={<ProductosAdmin />} />
-              <Route path="usuarios" element={<UsuariosAdmin />} />
-              <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
-            </Route>
-
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer/>
-      </div>
+      <Routes>
+        {/* Rutas públicas con su layout */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/nfts-en-videojuegos" element={<DetalleBlog1 />} />
+          <Route path="/blogs/5g-en-gaming" element={<DetalleBlog2 />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/producto/:id" element={<DetalleProducto />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        {/* Rutas admin con su propio layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashboardAdmin />} />
+          <Route path="productos" element={<ProductosAdmin />} />
+          <Route path="usuarios" element={<UsuariosAdmin />} />
+          <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
