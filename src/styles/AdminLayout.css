@@ -126,6 +126,8 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  background: #000;
+  color: #fff;
 }
 /* Reutilizables */
 .admin-btn {
@@ -146,12 +148,99 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  background: #111;
+  color: #fff;
 }
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid #555;
   padding: 0.5rem;
   text-align: left;
 }
 th {
-  background: #f0f0f0;
+  background: #333;
+  color: #fff;
+}
+td {
+  background: #222;
+}
+.admin-main button {
+  background: #444;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.admin-main button:hover {
+  background: #555;
+}
+.admin-main button:disabled {
+  background: #333;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* Estilos básicos para formularios admin */
+.admin-main form {
+  background: #111;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.admin-main h2, .admin-main h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.admin-main label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.admin-main input,
+.admin-main textarea,
+.admin-main select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+}
+
+.admin-main input:focus,
+.admin-main textarea:focus,
+.admin-main select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.admin-main textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-main .admin-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.admin-main .admin-btn:hover {
+  background: #333;
+}
+
+.admin-main .admin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
