@@ -1,3 +1,38 @@
+.admin-cards-center {
+  justify-content: center;
+}
+/* Cards resumen dashboard admin */
+.admin-cards-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.admin-card {
+  flex: 1 1 180px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 1px 4px 0 #0001;
+  min-width: 160px;
+  text-align: center;
+}
+.admin-card-title {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+.admin-card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+.admin-card-desc {
+  font-size: 0.95rem;
+  color: #888;
+}
 /* Footer admin minimalista */
 .footer-admin {
   text-align: center;
@@ -11,12 +46,22 @@
   display: flex;
   min-height: 100vh;
   font-family: Arial, sans-serif;
+  background: #fafbfc;
 }
 .admin-sidebar {
+  width: 210px;
   min-width: 180px;
+  max-width: 240px;
   background: #222;
   color: #fff;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem 1.5rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .admin-sidebar ul {
   list-style: none;
@@ -34,8 +79,10 @@
 }
 .admin-main {
   flex: 1;
-  padding: 1.5rem;
-  background: #fafbfc;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 /* Reutilizables */
 .admin-btn {
