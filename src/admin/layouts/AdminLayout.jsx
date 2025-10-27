@@ -13,8 +13,8 @@ export default function AdminLayout() {
       {/* Contenido admin */}
       <main className="admin-main">
         <Outlet />
-        <AdminFooter />
       </main>
+      <AdminFooter />
     </div>
   );
 }
