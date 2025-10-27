@@ -1,3 +1,10 @@
+/* Footer admin minimalista */
+.footer-admin {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.95rem;
+  color: #888;
+}
 
 /* Layout admin minimalista */
 .admin-layout {
