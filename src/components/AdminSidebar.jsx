@@ -14,7 +14,13 @@ export default function AdminSidebar() {
             <Link to="/admin/productos">Productos</Link>
           </li>
           <li>
+            <Link to="/admin/productos/nuevo">Nuevo Producto</Link>
+          </li>
+          <li>
             <Link to="/admin/usuarios">Usuarios</Link>
+          </li>
+          <li>
+            <Link to="/admin/usuarios/nuevo">Nuevo Usuario</Link>
           </li>
         </ul>
       </nav>

@@ -16,6 +16,7 @@ import AdminLayout from "./admin/layouts/AdminLayout";
 import DashboardAdmin from "./admin/pages/DashboardAdmin";
 import ProductosAdmin from "./admin/pages/ProductosAdmin";
 import UsuariosAdmin from "./admin/pages/UsuariosAdmin";
+import NuevoProductoAdmin from "./admin/pages/NuevoProductoAdmin";
 import NuevoUsuarioAdmin from "./admin/pages/NuevoUsuarioAdmin";
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<DashboardAdmin />} />
           <Route path="productos" element={<ProductosAdmin />} />
+          <Route path="productos/nuevo" element={<NuevoProductoAdmin />} />
           <Route path="usuarios" element={<UsuariosAdmin />} />
           <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
         </Route>
