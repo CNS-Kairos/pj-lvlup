@@ -204,3 +204,29 @@ h1, h2, h3 {
     color: var(--color-principal-negro);
 }
 
+/* Notificación de producto agregado al carrito */
+.notificacion-agregado {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--color-exito-verde);
+    color: var(--color-principal-negro);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.notificacion-agregado i {
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
