@@ -14,4 +14,4 @@ export default function ContadorCarrito() {
   );
 }
 
-// Comentario: Componente simple que muestra el número total de items en el carrito, actualizado en tiempo real. 
+// Componente simple que muestra el número total de items en el carrito, actualizado en tiempo real. Es el mismo contador del HTML estático pero ahora usando React y el hook personalizado.
