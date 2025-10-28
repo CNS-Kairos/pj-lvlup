@@ -15,6 +15,7 @@ export default function Carrito() {
     }
     const total = calcularTotal();
     const productosCount = totalProductos();
+    // eslint-disable-next-line no-restricted-globals
     if (confirm(`¿Confirmas tu compra de ${productosCount} productos por un total de $${total.toLocaleString('es-CL')}?`)) {
       alert('¡Compra realizada con éxito! Recibirás un email de confirmación pronto.');
       limpiarCarrito();
