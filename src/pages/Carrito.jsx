@@ -1,9 +1,26 @@
 // Página Carrito de Compras
 import { useCarrito } from '../hooks/useCarrito';
+import { useNavigate } from 'react-router-dom';
 
 export default function Carrito() {
   // Usar hook del carrito
-  const { carrito, agregarAlCarrito, quitarDelCarrito, eliminarProducto, limpiarCarrito, calcularTotal } = useCarrito();
+  const { carrito, agregarAlCarrito, quitarDelCarrito, eliminarProducto, limpiarCarrito, calcularTotal, totalProductos } = useCarrito();
+  const navigate = useNavigate();
+
+  // Función para finalizar compra
+  const handleFinalizarCompra = () => {
+    if (carrito.length === 0) {
+      alert('Tu carrito está vacío. ¡Agrega algunos productos primero!');
+      return;
+    }
+    const total = calcularTotal();
+    const productosCount = totalProductos();
+    if (confirm(`¿Confirmas tu compra de ${productosCount} productos por un total de $${total.toLocaleString('es-CL')}?`)) {
+      alert('¡Compra realizada con éxito! Recibirás un email de confirmación pronto.');
+      limpiarCarrito();
+      navigate('/productos');
+    }
+  };
 
   return (
     <div>
@@ -64,7 +81,7 @@ export default function Carrito() {
             <a href="/productos" className="boton-continuar">
               <i className="fa-solid fa-arrow-left"></i> Seguir Comprando
             </a>
-            <button className="boton-finalizar">
+            <button onClick={handleFinalizarCompra} className="boton-finalizar">
               <i className="fa-solid fa-credit-card"></i> Finalizar Compra
             </button>
           </div>
@@ -74,4 +91,4 @@ export default function Carrito() {
   );
 }
 
-// Carrito.jsx ahora incluye limpiar carrito y total dinámico. 
+// Carrito.jsx ahora incluye finalizar compra con confirmación. 
