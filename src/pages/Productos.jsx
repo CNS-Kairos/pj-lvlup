@@ -64,7 +64,7 @@ export default function Productos() {
         <div className="contenedor-productos" id="listaProductos">
           {productosFiltrados.map(producto => (
             <div key={producto.id} className="card-producto">
-              <img src={`img/${producto.imagen}`} alt={`Imagen del producto ${producto.nombre}`} />
+              <img src={producto.imagen} alt={`Imagen del producto ${producto.nombre}`} />
               <h3>{producto.nombre}</h3>
               <p>Precio: ${producto.precio.toLocaleString('es-CL')}</p>
               <div className="botones-producto">
