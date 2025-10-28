@@ -1,8 +1,12 @@
 // Hook personalizado para manejar el carrito de compras
 // Usa localStorage para persistir el carrito, tal cual como lo hicimos en la evaluación 1.
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 
-export function useCarrito() {
+// Crear el contexto
+const CarritoContext = createContext();
+
+// Proveedor del contexto
+export function CarritoProvider({ children }) {
   // Estado del carrito, inicializado desde localStorage
   const [carrito, setCarrito] = useState(() => {
     const guardado = localStorage.getItem('carrito');
@@ -57,8 +61,8 @@ export function useCarrito() {
     return carrito.reduce((total, p) => total + p.cantidad, 0);
   };
 
-  // Retornar el estado y las funciones
-  return {
+  // Valor del contexto
+  const value = {
     carrito,
     agregarAlCarrito,
     quitarDelCarrito,
@@ -67,6 +71,21 @@ export function useCarrito() {
     calcularTotal,
     totalProductos
   };
+
+  return (
+    <CarritoContext.Provider value={value}>
+      {children}
+    </CarritoContext.Provider>
+  );
+}
+
+// Hook para consumir el contexto
+export function useCarrito() {
+  const context = useContext(CarritoContext);
+  if (context === undefined) {
+    throw new Error('useCarrito debe usarse dentro de CarritoProvider');
+  }
+  return context;
 }
 
 // Este hook maneja toda la lógica del carrito, con localStorage y límites. No debería tener problemas testeandolo después con Jasmine y Karma. 
