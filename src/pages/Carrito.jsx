@@ -3,7 +3,7 @@ import { useCarrito } from '../hooks/useCarrito';
 
 export default function Carrito() {
   // Usar hook del carrito
-  const { carrito } = useCarrito();
+  const { carrito, agregarAlCarrito, quitarDelCarrito } = useCarrito();
 
   return (
     <div>
@@ -31,7 +31,9 @@ export default function Carrito() {
                   <p className="precio-unitario">${item.precio.toLocaleString('es-CL')} c/u</p>
                 </div>
                 <div className="controles-cantidad">
+                  <button onClick={() => quitarDelCarrito(item.id)} className="btn-cantidad">-</button>
                   <span className="cantidad">{item.cantidad}</span>
+                  <button onClick={() => agregarAlCarrito(item)} className="btn-cantidad">+</button>
                 </div>
                 <div className="precio-total">
                   <strong>${(item.precio * item.cantidad).toLocaleString('es-CL')}</strong>
@@ -64,4 +66,4 @@ export default function Carrito() {
   );
 }
 
-// Carrito.jsx ahora muestra lista básica de items desde el hook, con mensaje vacío. 
+// Carrito.jsx ahora incluye botones para modificar cantidad de items. 
