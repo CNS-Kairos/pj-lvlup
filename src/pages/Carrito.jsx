@@ -3,7 +3,7 @@ import { useCarrito } from '../hooks/useCarrito';
 
 export default function Carrito() {
   // Usar hook del carrito
-  const { carrito, agregarAlCarrito, quitarDelCarrito } = useCarrito();
+  const { carrito, agregarAlCarrito, quitarDelCarrito, eliminarProducto } = useCarrito();
 
   return (
     <div>
@@ -38,6 +38,11 @@ export default function Carrito() {
                 <div className="precio-total">
                   <strong>${(item.precio * item.cantidad).toLocaleString('es-CL')}</strong>
                 </div>
+                <div className="eliminar-producto">
+                  <button onClick={() => eliminarProducto(item.id)} className="btn-eliminar">
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
+                </div>
               </div>
             ))
           )}
@@ -66,4 +71,4 @@ export default function Carrito() {
   );
 }
 
-// Carrito.jsx ahora incluye botones para modificar cantidad de items. 
+// Carrito.jsx ahora incluye botón para eliminar producto individual. 
