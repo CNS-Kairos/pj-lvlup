@@ -8,7 +8,7 @@ export default function ContadorCarrito() {
   const { totalProductos } = useCarrito();
 
   return (
-    <span id="contadorCarrito" className={totalProductos > 0 ? 'tiene-productos' : ''}>
+    <span id="contadorCarrito" className={`contador-carrito ${totalProductos > 0 ? 'tiene-productos' : ''}`}>
       {totalProductos}
     </span>
   );
