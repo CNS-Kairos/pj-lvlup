@@ -14,7 +14,7 @@ export function useCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }, [carrito]);
 
-  // Función para agregar producto al carrito (sin límite de unidades)
+  // Función para agregar producto al carrito (Esta vez no tiene limite de unidades como en html estatico)
   const agregarAlCarrito = (producto) => {
     setCarrito(prevCarrito => {
       const existe = prevCarrito.find(p => p.id === producto.id);
