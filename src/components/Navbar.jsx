@@ -4,6 +4,7 @@
 
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo-lvl-up.png";
+import ContadorCarrito from "./ContadorCarrito";
 
 export default function Navbar() {
   return (
@@ -37,9 +38,7 @@ export default function Navbar() {
         <div className="menu-derecha">
           <Link to="/carrito" id="enlaceCarrito">
             <i className="fa-solid fa-cart-shopping" /> Carrito
-            <span id="contadorCarrito" className="contador-carrito">
-              0
-            </span>
+            <ContadorCarrito />
           </Link>
           <Link to="/login">
             <i className="fa-solid fa-user" /> Iniciar Sesión
