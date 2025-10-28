@@ -3,7 +3,7 @@ import { useCarrito } from '../hooks/useCarrito';
 
 export default function Carrito() {
   // Usar hook del carrito
-  const { carrito, agregarAlCarrito, quitarDelCarrito, eliminarProducto } = useCarrito();
+  const { carrito, agregarAlCarrito, quitarDelCarrito, eliminarProducto, limpiarCarrito, calcularTotal } = useCarrito();
 
   return (
     <div>
@@ -51,11 +51,14 @@ export default function Carrito() {
         {/* Resumen y acciones del carrito */}
         <div className="resumen-carrito">
           <div className="total-carrito" id="totalCarrito">
-            Total: $0
+            <div className="resumen-total">
+              <span>Total: </span>
+              <strong>${calcularTotal().toLocaleString('es-CL')}</strong>
+            </div>
           </div>
 
           <div className="acciones-carrito">
-            <button className="boton-limpiar">
+            <button onClick={limpiarCarrito} className="boton-limpiar">
               <i className="fa-solid fa-trash"></i> Limpiar Carrito
             </button>
             <a href="/productos" className="boton-continuar">
@@ -71,4 +74,4 @@ export default function Carrito() {
   );
 }
 
-// Carrito.jsx ahora incluye botón para eliminar producto individual. 
+// Carrito.jsx ahora incluye limpiar carrito y total dinámico. 
