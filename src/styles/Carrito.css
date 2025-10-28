@@ -73,3 +73,10 @@
 .boton-continuar:hover {
     background: linear-gradient(45deg, #0056b3, #007bff);
 }
+
+/* Estilos para las imágenes en el carrito */
+.imagen-producto img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}

@@ -42,7 +42,7 @@ export default function Carrito() {
             carrito.map(item => (
               <div key={item.id} className="item-carrito-completo">
                 <div className="imagen-producto">
-                  <img src={`img/${item.imagen}`} alt={item.nombre} />
+                  <img src={item.imagen} alt={item.nombre} />
                 </div>
                 <div className="info-producto">
                   <h3>{item.nombre}</h3>
