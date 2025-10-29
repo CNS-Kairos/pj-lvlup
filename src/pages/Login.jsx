@@ -1,11 +1,34 @@
 // Página de Login
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { useNotificacion } from '../context/NotificacionContext';
+
 export default function Login() {
+  const { login } = useAuth();
+  const { mostrarNotificacion } = useNotificacion();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const usuario = await login(email, password);
+    if (usuario) {
+      mostrarNotificacion(`¡Bienvenido ${usuario.email}!`, 'exito');
+      if (usuario.rol === 'admin') navigate('/admin');
+      else navigate('/');
+    }
+    // Si falla, el AuthContext ya muestra la notificación.
+  };
+
   return (
     <div>
       {/* Sección principal del formulario de login */}
       <section className="seccion-formulario">
         <h2>Iniciar Sesión</h2>
-        <form id="formularioLogin">
+        <form onSubmit={handleSubmit}>
           {/* Campo de Correo Electrónico */}
           <div className="campo-formulario">
             <label htmlFor="usuario">Correo Electrónico:</label>
@@ -16,6 +39,8 @@ export default function Login() {
               placeholder="admin@levelup.cl"
               required
               className="form-control-dark"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           {/* Campo de Contraseña */}
@@ -28,6 +53,8 @@ export default function Login() {
               placeholder="admin123"
               required
               className="form-control-dark"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           {/* Botón de envío */}
@@ -36,7 +63,7 @@ export default function Login() {
           </button>
           {/* Enlace a registro */}
           <p className="enlace-registro">
-            ¿Aún no tienes una cuenta? <a href="/registro">Regístrate aquí</a>
+            ¿Aún no tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
           </p>
         </form>
       </section>
