@@ -1,6 +1,24 @@
+// TODO-COPILOT: Tarea - Actualizar Dashboard.
+//
+// OBJETIVO:
+// Reemplazar el número estático de productos por
+// la data real del `ProductoContext`.
+// Esta tarea es *solo* para este archivo.
+//
+// INSTRUCCIONES:
+// 1. Importar `useProductos` de '../../context/ProductoContext'.
+// 2. Obtener: `const { productos } = useProductos();`
+// 3. En el JSX, buscar la "admin-card" de Productos.
+// 4. Reemplazar el "15" estático por `{productos.length}`.
+
+// (Pega tu código de DashboardAdmin.jsx original aquí debajo)
+
 // Dashboard admin
+import { useProductos } from '../../context/ProductoContext';
+
 // Página principal admin
 export default function DashboardAdmin() {
+  const { productos } = useProductos();
   return (
     <section>
       <div className="admin-dashboard-header">
@@ -12,7 +30,7 @@ export default function DashboardAdmin() {
       <div className="admin-cards-row admin-cards-center">
         <div className="admin-card">
           <div className="admin-card-title">Productos</div>
-          <div className="admin-card-value">15</div>
+          <div className="admin-card-value">{productos.length}</div>
           <div className="admin-card-desc">Total en catálogo</div>
         </div>
         <div className="admin-card">
