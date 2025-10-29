@@ -1,14 +1,15 @@
 // Nuevo producto admin
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useProductos } from '../../context/ProductoContext';
 import { useNotificacion } from '../../context/NotificacionContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Página para registrar un nuevo producto
 export default function NuevoProductoAdmin() {
-  const { crearProducto } = useProductos();
+  const { crearProducto, actualizarProducto, productos } = useProductos();
   const { mostrarNotificacion } = useNotificacion();
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -18,6 +19,14 @@ export default function NuevoProductoAdmin() {
     stock: 0,
     imagen: ''
   });
+
+  const productoAEditar = productos.find(p => p.id === parseInt(id));
+
+  useEffect(() => {
+    if (productoAEditar) {
+      setFormData(productoAEditar);
+    }
+  }, [productoAEditar]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,16 +41,21 @@ export default function NuevoProductoAdmin() {
       return;
     }
     
-    crearProducto(formData);
-    mostrarNotificacion('Producto creado con éxito', 'exito');
+    if (id) {
+      actualizarProducto(parseInt(id), formData);
+      mostrarNotificacion('Producto actualizado con éxito', 'exito');
+    } else {
+      crearProducto(formData);
+      mostrarNotificacion('Producto creado con éxito', 'exito');
+    }
     navigate('/admin/productos');
   };
   return (
     <section>
       {/* Título sección */}
       <div>
-        <h2>Nuevo Producto</h2>
-        <p>Complete el formulario para registrar un nuevo producto en el catálogo</p>
+        <h2>{id ? 'Editar Producto' : 'Nuevo Producto'}</h2>
+        <p>{id ? 'Modifique los datos del producto' : 'Complete el formulario para registrar un nuevo producto en el catálogo'}</p>
       </div>
 
       {/* Formulario nuevo producto */}
