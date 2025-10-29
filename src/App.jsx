@@ -22,6 +22,7 @@ import { CarritoProvider } from "./hooks/useCarrito";
 import { NotificacionProvider } from "./context/NotificacionContext";
 import { AuthProvider } from "./context/AuthContext";
 import { ProductoProvider } from "./context/ProductoContext";
+import { UsuarioProvider } from "./context/UsuarioContext";
 import RutaAdmin from "./components/RutaAdmin";
 
 export default function App() {
@@ -29,7 +30,8 @@ export default function App() {
     <NotificacionProvider>
       <AuthProvider>
         <CarritoProvider>
-          <ProductoProvider>
+          <UsuarioProvider>
+            <ProductoProvider>
             <BrowserRouter>
               <Routes>
                 {/* Rutas públicas con su layout */}
@@ -68,13 +70,18 @@ export default function App() {
                       path="usuarios/nuevo"
                       element={<NuevoUsuarioAdmin />}
                     />
+                    <Route
+                      path="usuarios/editar/:id"
+                      element={<NuevoUsuarioAdmin />}
+                    />
                   </Route>
                 </Route>
               </Routes>
             </BrowserRouter>
           </ProductoProvider>
-        </CarritoProvider>
-      </AuthProvider>
-    </NotificacionProvider>
+        </UsuarioProvider>
+      </CarritoProvider>
+    </AuthProvider>
+  </NotificacionProvider>
   );
 }
