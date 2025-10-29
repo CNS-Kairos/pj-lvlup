@@ -1,6 +1,24 @@
 // Productos admin
+import { useProductos } from '../../context/ProductoContext';
+import { useNotificacion } from '../../context/NotificacionContext';
+import { useNavigate } from 'react-router-dom';
+
 // Página productos admin
 export default function ProductosAdmin() {
+  const { productos, eliminarProducto } = useProductos();
+  const { mostrarNotificacion } = useNotificacion();
+  const navigate = useNavigate();
+
+  const handleEliminar = (id, nombre) => {
+    if (window.confirm(`¿Estás seguro de eliminar "${nombre}"?`)) {
+      eliminarProducto(id);
+      mostrarNotificacion(`Producto "${nombre}" eliminado correctamente`, 'exito');
+    }
+  };
+
+  const handleAgregarProducto = () => {
+    navigate('nuevo');
+  };
   return (
     <section>
       <h2>Gestión de Productos</h2>
@@ -8,7 +26,7 @@ export default function ProductosAdmin() {
 
       {/* Botón agregar producto */}
       <div>
-        <button>
+        <button onClick={handleAgregarProducto}>
           {/* Icono plus */}
           Agregar Producto
         </button>
@@ -28,7 +46,23 @@ export default function ProductosAdmin() {
             </tr>
           </thead>
           <tbody>
-            {/* Los productos se cargarán aquí */}
+            {productos.map(producto => (
+              <tr key={producto.id}>
+                <td>{producto.id}</td>
+                <td>{producto.nombre}</td>
+                <td>${producto.precio.toLocaleString('es-CL')}</td>
+                <td>{producto.stock}</td>
+                <td>{producto.categoria}</td>
+                <td>
+                  <button 
+                    onClick={() => handleEliminar(producto.id, producto.nombre)}
+                    className="btn-eliminar"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
