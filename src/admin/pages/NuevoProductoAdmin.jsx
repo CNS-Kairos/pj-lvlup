@@ -1,6 +1,41 @@
 // Nuevo producto admin
+import { useState } from 'react';
+import { useProductos } from '../../context/ProductoContext';
+import { useNotificacion } from '../../context/NotificacionContext';
+import { useNavigate } from 'react-router-dom';
+
 // Página para registrar un nuevo producto
 export default function NuevoProductoAdmin() {
+  const { crearProducto } = useProductos();
+  const { mostrarNotificacion } = useNotificacion();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    nombre: '',
+    descripcion: '',
+    precio: 0,
+    categoria: '',
+    stock: 0,
+    imagen: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // (Validación simple... podríamos agregar más)
+    if (Object.values(formData).some(val => val === '')) {
+      mostrarNotificacion('Todos los campos son obligatorios', 'error');
+      return;
+    }
+    
+    crearProducto(formData);
+    mostrarNotificacion('Producto creado con éxito', 'exito');
+    navigate('/admin/productos');
+  };
   return (
     <section>
       {/* Título sección */}
@@ -10,7 +45,7 @@ export default function NuevoProductoAdmin() {
       </div>
 
       {/* Formulario nuevo producto */}
-      <form noValidate>
+      <form onSubmit={handleSubmit}>
         {/* Información básica */}
         <div>
           <h3>Información Básica</h3>
@@ -18,24 +53,54 @@ export default function NuevoProductoAdmin() {
             {/* Nombre */}
             <div>
               <label>Nombre del Producto *</label>
-              <input type="text" placeholder="Ingrese el nombre del producto" maxLength={100} required />
+              <input 
+                type="text" 
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                placeholder="Ingrese el nombre del producto" 
+                maxLength={100} 
+                required 
+              />
             </div>
             {/* Descripción */}
             <div>
               <label>Descripción *</label>
-              <textarea placeholder="Ingrese la descripción del producto" maxLength={500} rows={4} required />
+              <textarea 
+                name="descripcion"
+                value={formData.descripcion}
+                onChange={handleChange}
+                placeholder="Ingrese la descripción del producto" 
+                maxLength={500} 
+                rows={4} 
+                required 
+              />
               <div>Máximo 500 caracteres</div>
             </div>
             {/* Precio */}
             <div>
               <label>Precio *</label>
-              <input type="number" placeholder="0" min={0} step={0.01} required />
+              <input 
+                type="number" 
+                name="precio"
+                value={formData.precio}
+                onChange={handleChange}
+                placeholder="0" 
+                min={0} 
+                step={0.01} 
+                required 
+              />
               <div>En CLP, sin puntos ni comas</div>
             </div>
             {/* Categoría */}
             <div>
               <label>Categoría *</label>
-              <select required>
+              <select 
+                name="categoria"
+                value={formData.categoria}
+                onChange={handleChange}
+                required
+              >
                 <option value="">Seleccione una categoría</option>
                 <option value="consolas">Consolas</option>
                 <option value="juegos">Juegos</option>
@@ -46,7 +111,15 @@ export default function NuevoProductoAdmin() {
             {/* Stock */}
             <div>
               <label>Stock Inicial *</label>
-              <input type="number" placeholder="0" min={0} required />
+              <input 
+                type="number" 
+                name="stock"
+                value={formData.stock}
+                onChange={handleChange}
+                placeholder="0" 
+                min={0} 
+                required 
+              />
               <div>Cantidad disponible</div>
             </div>
           </div>
@@ -58,7 +131,14 @@ export default function NuevoProductoAdmin() {
           <div>
             <div>
               <label>URL de la Imagen *</label>
-              <input type="url" placeholder="https://ejemplo.com/imagen.jpg" required />
+              <input 
+                type="url" 
+                name="imagen"
+                value={formData.imagen}
+                onChange={handleChange}
+                placeholder="https://ejemplo.com/imagen.jpg" 
+                required 
+              />
               <div>Debe ser una URL válida de imagen</div>
             </div>
           </div>
@@ -67,7 +147,7 @@ export default function NuevoProductoAdmin() {
         {/* Botones acción */}
         <div>
           <button type="submit">Guardar Producto</button>
-          <button type="button">Cancelar</button>
+          <button type="button" onClick={() => navigate(-1)}>Cancelar</button>
         </div>
       </form>
     </section>
