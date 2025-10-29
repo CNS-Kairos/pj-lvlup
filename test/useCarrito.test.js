@@ -99,4 +99,112 @@ describe("useCarrito CRUD y Totales", () => {
     expect(result.current.carrito.length).toBe(0);
     expect(result.current.totalProductos()).toBe(0);
   });
+
+  // IT06
+  it("debe inicializar el carrito con datos de localStorage si existen", () => {
+    // 1. Prepara el localStorage antes de renderizar el hook
+    const datosGuardados = JSON.stringify([
+      { id: 200, nombre: "Test Item", precio: 10, cantidad: 3 },
+    ]);
+    localStorage.setItem("carrito", datosGuardados);
+
+    // 2. Renderiza el hook
+    const { result } = renderHook(() => useCarrito(), {
+      wrapper: CarritoProvider,
+    });
+
+    // 3. Verificación
+    expect(result.current.carrito.length).toBe(1);
+    expect(result.current.totalProductos()).toBe(3);
+    expect(result.current.calcularTotal()).toBe(30);
+  });
+
+  // IT07
+  it("debe eliminar el producto si se intenta quitar una unidad cuando solo queda uno", () => {
+    const { result } = renderHook(() => useCarrito(), {
+      wrapper: CarritoProvider,
+    });
+
+    // Agregamos solo una unidad
+    act(() => {
+      result.current.agregarAlCarrito(productoDePrueba); // Cantidad: 1
+    });
+
+    // Intentamos quitar una unidad
+    act(() => {
+      result.current.quitarDelCarrito(productoDePrueba.id);
+    });
+
+    // Verificación: El producto debe desaparecer
+    expect(result.current.carrito.length).toBe(0);
+    expect(result.current.totalProductos()).toBe(0);
+  });
+
+  // IT08
+  it("no debe arrojar error si se intenta eliminar un producto inexistente", () => {
+    const { result } = renderHook(() => useCarrito(), {
+      wrapper: CarritoProvider,
+    });
+
+    // La lista está vacía
+    expect(result.current.carrito.length).toBe(0);
+
+    // Intentamos eliminar un ID que nunca existió (ID 999)
+    act(() => {
+      result.current.eliminarProducto(999);
+    });
+
+    // Verificación: Debe seguir sin fallar y vacío
+    expect(result.current.carrito.length).toBe(0);
+  });
+
+  // IT09
+  it("debe limpiar todo el carrito y resetear los totales al usar limpiarCarrito()", () => {
+    const { result } = renderHook(() => useCarrito(), {
+      wrapper: CarritoProvider,
+    });
+
+    // Cargamos algunos productos
+    act(() => {
+      result.current.agregarAlCarrito(productoDePrueba);
+      result.current.agregarAlCarrito(productoDePrueba);
+    });
+
+    // Verificamos que no esté vacío
+    expect(result.current.totalProductos()).toBe(2);
+
+    // Limpiamos el carrito
+    act(() => {
+      result.current.limpiarCarrito();
+    });
+
+    // Verificación final
+    expect(result.current.carrito.length).toBe(0);
+    expect(result.current.totalProductos()).toBe(0);
+  });
+
+  // IT10
+  it("debe calcular totales correctamente con múltiples productos diferentes", () => {
+    const producto2 = { id: 101, nombre: "Otro Item", precio: 10, cantidad: 1 };
+    const { result } = renderHook(() => useCarrito(), {
+      wrapper: CarritoProvider,
+    });
+
+    act(() => {
+      // Producto 1: 1 unidad @ $50
+      result.current.agregarAlCarrito(productoDePrueba);
+      // Producto 2: 3 unidades @ $10
+      result.current.agregarAlCarrito(producto2);
+      result.current.agregarAlCarrito(producto2);
+      result.current.agregarAlCarrito(producto2);
+    });
+
+    // Verificación:
+    // Cantidad de ITEMS: 2 (dos tipos de productos)
+    expect(result.current.carrito.length).toBe(2);
+    // Total de PRODUCTOS: 1 + 3 = 4
+    expect(result.current.totalProductos()).toBe(4);
+    // Total a PAGAR: (1 * 50) + (3 * 10) = 80
+    expect(result.current.calcularTotal()).toBe(80);
+  });
 });
