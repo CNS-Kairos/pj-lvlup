@@ -2,6 +2,7 @@
 import { useProductos } from '../../context/ProductoContext';
 import { useNotificacion } from '../../context/NotificacionContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Página productos admin
 export default function ProductosAdmin() {
@@ -54,6 +55,7 @@ export default function ProductosAdmin() {
                 <td>{producto.stock}</td>
                 <td>{producto.categoria}</td>
                 <td>
+                  <Link to={`editar/${producto.id}`}>Editar</Link>
                   <button 
                     onClick={() => handleEliminar(producto.id, producto.nombre)}
                     className="btn-eliminar"
