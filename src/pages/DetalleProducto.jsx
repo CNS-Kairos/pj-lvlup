@@ -1,11 +1,12 @@
-// Página Detalle de Producto
 import { useParams, Link } from 'react-router-dom';
 import { productos } from '../data/productos';
 import { useCarrito } from '../hooks/useCarrito';
+import { useNotificacion } from '../context/NotificacionContext';
 
 export default function DetalleProducto() {
   const { id } = useParams();
   const { agregarAlCarrito } = useCarrito();
+  const { mostrarNotificacion } = useNotificacion();
 
   // Buscar el producto por ID
   const producto = productos.find(p => p.id === parseInt(id));
@@ -26,7 +27,7 @@ export default function DetalleProducto() {
   // Función para agregar al carrito
   const handleAgregarAlCarrito = () => {
     agregarAlCarrito(producto);
-    alert(`${producto.nombre} agregado al carrito!`);
+    mostrarNotificacion(`¡${producto.nombre} agregado al carrito!`);
   };
 
   return (
