@@ -19,37 +19,43 @@ import UsuariosAdmin from "./admin/pages/UsuariosAdmin";
 import NuevoProductoAdmin from "./admin/pages/NuevoProductoAdmin";
 import NuevoUsuarioAdmin from "./admin/pages/NuevoUsuarioAdmin";
 import { CarritoProvider } from "./hooks/useCarrito";
+import { NotificacionProvider } from "./context/NotificacionContext";
 
 export default function App() {
   return (
-    <CarritoProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Rutas públicas con su layout */}
-          <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/nfts-en-videojuegos" element={<DetalleBlog1 />} />
-            <Route path="/blogs/5g-en-gaming" element={<DetalleBlog2 />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/producto/:id" element={<DetalleProducto />} />
-            <Route path="/carrito" element={<Carrito />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          {/* Rutas admin con su propio layout */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<DashboardAdmin />} />
-            <Route path="productos" element={<ProductosAdmin />} />
-            <Route path="productos/nuevo" element={<NuevoProductoAdmin />} />
-            <Route path="usuarios" element={<UsuariosAdmin />} />
-            <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CarritoProvider>
+    <NotificacionProvider>
+      <CarritoProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Rutas públicas con su layout */}
+            <Route element={<PublicLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route
+                path="/blogs/nfts-en-videojuegos"
+                element={<DetalleBlog1 />}
+              />
+              <Route path="/blogs/5g-en-gaming" element={<DetalleBlog2 />} />
+              <Route path="/productos" element={<Productos />} />
+              <Route path="/producto/:id" element={<DetalleProducto />} />
+              <Route path="/carrito" element={<Carrito />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            {/* Rutas admin con su propio layout */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<DashboardAdmin />} />
+              <Route path="productos" element={<ProductosAdmin />} />
+              <Route path="productos/nuevo" element={<NuevoProductoAdmin />} />
+              <Route path="usuarios" element={<UsuariosAdmin />} />
+              <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CarritoProvider>
+    </NotificacionProvider>
   );
 }
