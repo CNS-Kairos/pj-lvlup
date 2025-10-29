@@ -1,18 +1,18 @@
-// Página de Productos
 import { useState } from 'react';
 import { productos } from '../data/productos';
 import { useCarrito } from '../hooks/useCarrito';
 import { Link } from 'react-router-dom';
+import { useNotificacion } from '../context/NotificacionContext';
 
 export default function Productos() {
   // Hook del carrito
   const { agregarAlCarrito } = useCarrito();
 
+  // Hook de notificaciones
+  const { mostrarNotificacion } = useNotificacion();
+
   // Estado para productos filtrados
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
-
-  // Estado para notificación
-  const [notificacion, setNotificacion] = useState('');
 
   // Función para filtrar productos
   const filtrarProductos = (categoria) => {
@@ -26,8 +26,7 @@ export default function Productos() {
   // Función para agregar al carrito con notificación
   const handleAgregarAlCarrito = (producto) => {
     agregarAlCarrito(producto);
-    setNotificacion(`¡${producto.nombre} agregado al carrito!`);
-    setTimeout(() => setNotificacion(''), 2000); // Ocultar después de 2s
+    mostrarNotificacion(`¡${producto.nombre} agregado al carrito!`);
   };
 
   // Categorías únicas para el select
@@ -35,14 +34,6 @@ export default function Productos() {
 
   return (
     <div>
-      {/* Notificación flotante */}
-      {notificacion && (
-        <div className="notificacion-agregado">
-          <i className="fa-solid fa-check-circle"></i>
-          <span>{notificacion}</span>
-        </div>
-      )}
-
       {/* Sección principal de productos */}
       <section className="seccion-productos">
         <h2>Todos nuestros productos</h2>
