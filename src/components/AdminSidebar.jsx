@@ -1,7 +1,16 @@
 // Sidebar exclusivo para admin
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function AdminSidebar() {
+  const { usuario, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <aside className="admin-sidebar">
       <div className="admin-sidebar-title">Admin</div>
@@ -24,6 +33,16 @@ export default function AdminSidebar() {
           </li>
         </ul>
       </nav>
+
+      {/* Información del usuario y logout */}
+      <div className="admin-sidebar-user">
+        <div className="admin-sidebar-user-info">
+          <div className="admin-sidebar-user-email">{usuario?.email}</div>
+          <button className="admin-sidebar-logout-btn" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        </div>
+      </div>
     </aside>
   );
 }
