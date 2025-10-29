@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { productos } from '../data/productos';
 import { useCarrito } from '../hooks/useCarrito';
+import { Link } from 'react-router-dom';
 
 export default function Productos() {
   // Hook del carrito
@@ -74,9 +75,9 @@ export default function Productos() {
                 >
                   Comprar
                 </button>
-                <a href={`/producto/${producto.id}`} className="boton-detalle">
+                <Link to={`/producto/${producto.id}`} className="boton-detalle">
                   Ver Detalle
-                </a>
+                </Link>
               </div>
             </div>
           ))}
