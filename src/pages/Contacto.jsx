@@ -1,5 +1,79 @@
 // Página de Contacto
+import { useState } from 'react';
+import { useNotificacion } from '../context/NotificacionContext';
+
 export default function Contacto() {
+  const { mostrarNotificacion } = useNotificacion();
+  // Estados para los campos del formulario
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    asunto: '',
+    mensaje: ''
+  });
+
+  // Estados para errores
+  const [errors, setErrors] = useState({});
+
+  // Función para manejar cambios en los inputs
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Limpiar error al cambiar
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  // Función para validar el formulario
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Nombre: obligatorio, max 100
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = 'El nombre es obligatorio';
+    } else if (formData.nombre.length > 100) {
+      newErrors.nombre = 'El nombre no puede tener más de 100 caracteres';
+    }
+
+    // Email: obligatorio, max 100, dominios específicos
+    if (!formData.email.trim()) {
+      newErrors.email = 'El correo electrónico es obligatorio';
+    } else if (formData.email.length > 100) {
+      newErrors.email = 'El correo no puede tener más de 100 caracteres';
+    } else if (!['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'].some(dominio => formData.email.endsWith(dominio))) {
+      newErrors.email = 'Solo se permiten dominios @duoc.cl, @profesor.duoc.cl y @gmail.com';
+    }
+
+    // Asunto: obligatorio (como en HTML), max 100
+    if (!formData.asunto.trim()) {
+      newErrors.asunto = 'El asunto es obligatorio';
+    } else if (formData.asunto.length > 100) {
+      newErrors.asunto = 'El asunto no puede tener más de 100 caracteres';
+    }
+
+    // Mensaje: obligatorio, max 500
+    if (!formData.mensaje.trim()) {
+      newErrors.mensaje = 'El comentario es obligatorio';
+    } else if (formData.mensaje.length > 500) {
+      newErrors.mensaje = 'El comentario no puede tener más de 500 caracteres';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Función para manejar el envío
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Simular envío
+      mostrarNotificacion('Mensaje enviado exitosamente. Te contactaremos pronto.');
+      // Limpiar formulario
+      setFormData({ nombre: '', email: '', asunto: '', mensaje: '' });
+    }
+  };
+
   return (
     <div>
       {/* Banner */}
@@ -15,7 +89,7 @@ export default function Contacto() {
           brevedad posible.
         </p>
 
-        <form className="formulario-contacto">
+        <form className="formulario-contacto" onSubmit={handleSubmit}>
           {/* Campo "Nombre" */}
           <div className="campo-formulario">
             <label htmlFor="nombre">Nombre completo:</label>
@@ -26,7 +100,10 @@ export default function Contacto() {
               className="form-control-dark"
               required
               placeholder="Máximo 100 caracteres"
+              value={formData.nombre}
+              onChange={handleChange}
             />
+            {errors.nombre && <div className="error">{errors.nombre}</div>}
           </div>
 
           {/* Campo "Email" */}
@@ -39,7 +116,10 @@ export default function Contacto() {
               className="form-control-dark"
               required
               placeholder="usuario@duoc.cl (máximo 100 caracteres)"
+              value={formData.email}
+              onChange={handleChange}
             />
+            {errors.email && <div className="error">{errors.email}</div>}
           </div>
 
           {/* Campo "Asunto" */}
@@ -52,7 +132,10 @@ export default function Contacto() {
               className="form-control-dark"
               required
               placeholder="Máximo 100 caracteres"
+              value={formData.asunto}
+              onChange={handleChange}
             />
+            {errors.asunto && <div className="error">{errors.asunto}</div>}
           </div>
 
           {/* Campo "Mensaje" */}
@@ -65,7 +148,10 @@ export default function Contacto() {
               rows="6"
               required
               placeholder="Escribe tu comentario aquí (máximo 500 caracteres)"
+              value={formData.mensaje}
+              onChange={handleChange}
             ></textarea>
+            {errors.mensaje && <div className="error">{errors.mensaje}</div>}
           </div>
 
           {/* Botón para enviar */}
