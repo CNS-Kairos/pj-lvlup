@@ -59,6 +59,10 @@ export default function App() {
                       path="productos/nuevo"
                       element={<NuevoProductoAdmin />}
                     />
+                    <Route
+                      path="productos/editar/:id"
+                      element={<NuevoProductoAdmin />}
+                    />
                     <Route path="usuarios" element={<UsuariosAdmin />} />
                     <Route
                       path="usuarios/nuevo"
