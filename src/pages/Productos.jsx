@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { productos } from '../data/productos';
+import { useState, useEffect } from 'react';
+import { useProductos } from '../context/ProductoContext';
 import { useCarrito } from '../hooks/useCarrito';
 import { Link } from 'react-router-dom';
 import { useNotificacion } from '../context/NotificacionContext';
@@ -11,15 +11,23 @@ export default function Productos() {
   // Hook de notificaciones
   const { mostrarNotificacion } = useNotificacion();
 
+  // Hook de productos globales
+  const { productos: productosGlobales } = useProductos();
+
   // Estado para productos filtrados
-  const [productosFiltrados, setProductosFiltrados] = useState(productos);
+  const [productosFiltrados, setProductosFiltrados] = useState(productosGlobales);
+
+  // useEffect para actualizar productosFiltrados cuando cambien productosGlobales
+  useEffect(() => {
+    setProductosFiltrados(productosGlobales);
+  }, [productosGlobales]);
 
   // Función para filtrar productos
   const filtrarProductos = (categoria) => {
     if (categoria === 'Todos') {
-      setProductosFiltrados(productos);
+      setProductosFiltrados(productosGlobales);
     } else {
-      setProductosFiltrados(productos.filter(p => p.categoria === categoria));
+      setProductosFiltrados(productosGlobales.filter(p => p.categoria === categoria));
     }
   };
 
@@ -30,7 +38,7 @@ export default function Productos() {
   };
 
   // Categorías únicas para el select
-  const categorias = ['Todos', ...new Set(productos.map(p => p.categoria))];
+  const categorias = ['Todos', ...new Set(productosGlobales.map(p => p.categoria))];
 
   return (
     <div>
