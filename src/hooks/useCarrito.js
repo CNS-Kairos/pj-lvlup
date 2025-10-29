@@ -1,6 +1,6 @@
 // Hook personalizado para manejar el carrito de compras
 // Usa localStorage para persistir el carrito, tal cual como lo hicimos en la evaluación 1.
-import { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 // Crear el contexto
 const CarritoContext = createContext();
