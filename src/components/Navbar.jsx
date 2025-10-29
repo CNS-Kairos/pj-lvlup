@@ -3,10 +3,17 @@
 // ====================================
 
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import logo from "../assets/img/logo-lvl-up.png";
 import ContadorCarrito from "./ContadorCarrito";
 
 export default function Navbar() {
+  const { usuario, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header>
       <nav className="navbar">
@@ -40,12 +47,25 @@ export default function Navbar() {
             <i className="fa-solid fa-cart-shopping" /> Carrito
             <ContadorCarrito />
           </Link>
-          <Link to="/login">
-            <i className="fa-solid fa-user" /> Iniciar Sesión
-          </Link>
-          <Link to="/registro">
-            <i className="fa-solid fa-user-plus" /> Registrarse
-          </Link>
+          {usuario ? (
+            <>
+              <span className="usuario-info">
+                <i className="fa-solid fa-user" /> Bienvenido {usuario.email}
+              </span>
+              <button onClick={handleLogout} className="btn-logout">
+                <i className="fa-solid fa-sign-out-alt" /> Cerrar Sesión
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <i className="fa-solid fa-user" /> Iniciar Sesión
+              </Link>
+              <Link to="/registro">
+                <i className="fa-solid fa-user-plus" /> Registrarse
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </header>
