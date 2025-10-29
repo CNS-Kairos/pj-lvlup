@@ -25,8 +25,8 @@ import RutaAdmin from "./components/RutaAdmin";
 
 export default function App() {
   return (
-    <AuthProvider>
-      <NotificacionProvider>
+    <NotificacionProvider>
+      <AuthProvider>
         <CarritoProvider>
           <BrowserRouter>
             <Routes>
@@ -53,15 +53,21 @@ export default function App() {
                 <Route element={<AdminLayout />}>
                   <Route index element={<DashboardAdmin />} />
                   <Route path="productos" element={<ProductosAdmin />} />
-                  <Route path="productos/nuevo" element={<NuevoProductoAdmin />} />
+                  <Route
+                    path="productos/nuevo"
+                    element={<NuevoProductoAdmin />}
+                  />
                   <Route path="usuarios" element={<UsuariosAdmin />} />
-                  <Route path="usuarios/nuevo" element={<NuevoUsuarioAdmin />} />
+                  <Route
+                    path="usuarios/nuevo"
+                    element={<NuevoUsuarioAdmin />}
+                  />
                 </Route>
               </Route>
             </Routes>
           </BrowserRouter>
         </CarritoProvider>
-      </NotificacionProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </NotificacionProvider>
   );
 }
