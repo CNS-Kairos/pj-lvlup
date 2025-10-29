@@ -1,12 +1,14 @@
-
-
 // Página de Registro
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { useNotificacion } from '../context/NotificacionContext';
 import { comunasPorRegion } from '../data/comunas';
 
 export default function Registro() {
+  const { registro } = useAuth();
   const { mostrarNotificacion } = useNotificacion();
+  const navigate = useNavigate();
 
   // Estados para los campos del formulario
   const [formData, setFormData] = useState({
@@ -153,24 +155,19 @@ export default function Registro() {
   };
 
   // Función para manejar el envío
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Simular registro exitoso
-      mostrarNotificacion('Registro exitoso. ¡Bienvenido a Level-Up Gamer!');
-      // Limpiar formulario
-      setFormData({
-        nombre: '',
-        apellidos: '',
-        correo: '',
-        rut: '',
-        telefono: '',
-        region: '',
-        comuna: '',
-        direccion: '',
-        contraseña: '',
-        confirmarContraseña: ''
-      });
+      // Validación simple de contraseña:
+      if (formData.contraseña !== formData.confirmarContraseña) {
+        mostrarNotificacion('Las contraseñas no coinciden', 'error');
+        return;
+      }
+      const usuario = await registro(formData);
+      if (usuario) {
+        mostrarNotificacion('¡Registro exitoso! Bienvenido.', 'exito');
+        navigate('/');
+      }
     }
   };
   return (
@@ -362,7 +359,7 @@ export default function Registro() {
           {/* Botón de envío */}
           <button type="submit" className="boton-enviar">Registrarse</button>
           {/* Enlace a login */}
-          <p className="enlace-registro">¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a></p>
+          <p className="enlace-registro">¿Ya tienes una cuenta? <Link to="/login">Inicia sesión aquí</Link></p>
         </form>
       </section>
     </div>
