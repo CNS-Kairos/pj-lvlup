@@ -5,8 +5,8 @@
 import { renderHook, act } from "@testing-library/react";
 
 // Importamos el Hook y el Provider de tu Contexto.
-// Asegúrate de que el path sea correcto: 'src/hooks/useCarrito'
-import { useCarrito, CarritoProvider } from "../src/hooks/useCarrito";
+// Asegúrate de que el path sea correcto: '../hooks/useCarrito'
+import { useCarrito, CarritoProvider } from "../hooks/useCarrito";
 
 // Datos de prueba para simular un producto.
 const productoDePrueba = {

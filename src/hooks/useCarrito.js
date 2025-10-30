@@ -36,7 +36,7 @@ export function CarritoProvider({ children }) {
   const quitarDelCarrito = (id) => {
     setCarrito(prevCarrito =>
       prevCarrito.map(p =>
-        p.id === id && p.cantidad > 1 ? { ...p, cantidad: p.cantidad - 1 } : p
+        p.id === id ? { ...p, cantidad: p.cantidad - 1 } : p
       ).filter(p => p.cantidad > 0) // Remover si llega a 0
     );
   };
